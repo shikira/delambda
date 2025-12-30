@@ -43,12 +43,12 @@ func main() {
 
 func handleList(region, profile *string) {
 	fs := flag.NewFlagSet("list", flag.ExitOnError)
-	fs.String("region", *region, "AWS region")
-	fs.String("profile", *profile, "AWS profile")
+	regionFlag := fs.String("region", *region, "AWS region")
+	profileFlag := fs.String("profile", *profile, "AWS profile")
 	fs.Parse(os.Args[2:])
 
 	ctx := context.Background()
-	awsClient, err := client.NewAWSClient(ctx, *region, *profile)
+	awsClient, err := client.NewAWSClient(ctx, *regionFlag, *profileFlag)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to create AWS client: %v\n", err)
 		os.Exit(1)
@@ -84,8 +84,8 @@ func handleList(region, profile *string) {
 func handleDetachVPC(region, profile *string) {
 	fs := flag.NewFlagSet("detach-vpc", flag.ExitOnError)
 	disableIPv6 := fs.Bool("disable-ipv6", true, "Disable IPv6 before detaching VPC")
-	fs.String("region", *region, "AWS region")
-	fs.String("profile", *profile, "AWS profile")
+	regionFlag := fs.String("region", *region, "AWS region")
+	profileFlag := fs.String("profile", *profile, "AWS profile")
 	fs.Parse(os.Args[2:])
 
 	args := fs.Args()
@@ -98,7 +98,7 @@ func handleDetachVPC(region, profile *string) {
 	functionName := args[0]
 
 	ctx := context.Background()
-	awsClient, err := client.NewAWSClient(ctx, *region, *profile)
+	awsClient, err := client.NewAWSClient(ctx, *regionFlag, *profileFlag)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to create AWS client: %v\n", err)
 		os.Exit(1)
@@ -125,8 +125,8 @@ func handleDelete(region, profile *string) {
 	detachVPC := fs.Bool("detach-vpc", false, "Detach VPC before deleting")
 	disableIPv6 := fs.Bool("disable-ipv6", false, "Disable IPv6 before detaching VPC")
 	withLogs := fs.Bool("with-logs", false, "Delete associated CloudWatch logs")
-	fs.String("region", *region, "AWS region")
-	fs.String("profile", *profile, "AWS profile")
+	regionFlag := fs.String("region", *region, "AWS region")
+	profileFlag := fs.String("profile", *profile, "AWS profile")
 	fs.Parse(os.Args[2:])
 
 	args := fs.Args()
@@ -139,7 +139,7 @@ func handleDelete(region, profile *string) {
 	functionName := args[0]
 
 	ctx := context.Background()
-	awsClient, err := client.NewAWSClient(ctx, *region, *profile)
+	awsClient, err := client.NewAWSClient(ctx, *regionFlag, *profileFlag)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to create AWS client: %v\n", err)
 		os.Exit(1)
@@ -166,8 +166,8 @@ func handleDelete(region, profile *string) {
 
 func handleDeleteLogs(region, profile *string) {
 	fs := flag.NewFlagSet("delete-logs", flag.ExitOnError)
-	fs.String("region", *region, "AWS region")
-	fs.String("profile", *profile, "AWS profile")
+	regionFlag := fs.String("region", *region, "AWS region")
+	profileFlag := fs.String("profile", *profile, "AWS profile")
 	fs.Parse(os.Args[2:])
 
 	args := fs.Args()
@@ -180,7 +180,7 @@ func handleDeleteLogs(region, profile *string) {
 	logGroupName := args[0]
 
 	ctx := context.Background()
-	awsClient, err := client.NewAWSClient(ctx, *region, *profile)
+	awsClient, err := client.NewAWSClient(ctx, *regionFlag, *profileFlag)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to create AWS client: %v\n", err)
 		os.Exit(1)
