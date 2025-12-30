@@ -12,6 +12,32 @@ Deleting VPC-attached Lambda functions can be extremely time-consuming due to:
 
 `clambda` solves these problems by providing a streamlined, automated workflow for Lambda function deletion.
 
+## Installation
+
+### Using install script (Recommended)
+
+For Linux and macOS:
+
+```bash
+# Install the latest version
+curl -sSfL https://raw.githubusercontent.com/shikira/clambda/main/install.sh | bash
+
+# Install a specific version
+curl -sSfL https://raw.githubusercontent.com/shikira/clambda/main/install.sh | bash -s v1.0.0
+```
+
+### Using Go install
+
+Requires Go 1.25 or later:
+
+```bash
+go install github.com/shirasu/clambda/cmd/clambda@latest
+```
+
+### Download binary manually
+
+Download the appropriate binary for your platform from the [releases page](https://github.com/shikira/clambda/releases) and add it to your PATH.
+
 ## Features
 
 - List all Lambda functions with VPC status
@@ -22,25 +48,6 @@ Deleting VPC-attached Lambda functions can be extremely time-consuming due to:
 - Delete associated CloudWatch Logs log groups
 - Comprehensive error handling and progress feedback
 - Built with Domain-Driven Design (DDD) architecture
-
-## Installation
-
-### Prerequisites
-
-- Go 1.25 or later
-- AWS credentials configured
-
-### Build from source
-
-```bash
-make build
-```
-
-### Install
-
-```bash
-go install github.com/shirasu/clambda/cmd/clambda@latest
-```
 
 ## Usage
 
@@ -103,6 +110,12 @@ clambda list
 
 ## Development
 
+### Prerequisites for Development
+
+- Go 1.25 or later
+- AWS credentials configured
+- Node.js and npm (for CDK)
+
 ### Available Make Commands
 
 ```bash
@@ -115,6 +128,12 @@ make lint         # Run linters
 make fmt          # Format code
 make deploy       # Deploy CDK test infrastructure
 make destroy      # Destroy CDK test infrastructure
+```
+
+### Build from source
+
+```bash
+make build
 ```
 
 ### Deploy Test Environment
