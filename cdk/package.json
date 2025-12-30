@@ -7,11 +7,12 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build": "tsc && node esbuild.config.js",
-    "watch": "tsc -w",
-    "test": "vitest run",
-    "test:coverage": "pnpm test --coverage",
-    "test:watch": "pnpm test",
+    "build": "tsx esbuild.config.ts",
+    "watch": "tsx esbuild.config.ts --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "pnpm typecheck && vitest run",
+    "test:coverage": "pnpm typecheck && vitest run --coverage",
+    "test:watch": "vitest",
     "cdk": "cdk"
   },
   "packageManager": "pnpm@9.15.4",
@@ -20,7 +21,9 @@
     "@vitest/coverage-v8": "^3.0.5",
     "aws-cdk": "2.1018.0",
     "esbuild": "^0.24.2",
+    "glob": "^13.0.0",
     "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "~5.7.3",
     "vitest": "^3.0.5"
   },
