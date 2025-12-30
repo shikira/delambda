@@ -1,4 +1,4 @@
-module github.com/shirasu/rm-lambda
+module github.com/shirasu/clambda
 
 go 1.25.5
 

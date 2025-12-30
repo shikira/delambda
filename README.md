@@ -39,7 +39,7 @@ make build
 ### Install
 
 ```bash
-go install github.com/shirasu/rm-lambda/cmd/clambda@latest
+go install github.com/shirasu/clambda/cmd/clambda@latest
 ```
 
 ## Usage

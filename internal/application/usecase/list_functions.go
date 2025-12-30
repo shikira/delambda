@@ -3,7 +3,7 @@ package usecase
 import (
 	"context"
 
-	"github.com/shirasu/rm-lambda/internal/domain/function"
+	"github.com/shirasu/clambda/internal/domain/function"
 )
 
 // ListFunctionsUseCase handles listing Lambda functions

@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/shirasu/rm-lambda/internal/domain/function"
-	"github.com/shirasu/rm-lambda/internal/domain/stack"
+	"github.com/shirasu/clambda/internal/domain/function"
+	"github.com/shirasu/clambda/internal/domain/stack"
 )
 
 // DetachVPCStackUseCase handles detaching VPC from all Lambda functions in a stack

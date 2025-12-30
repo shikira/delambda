@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/shirasu/rm-lambda/internal/domain/function"
+	"github.com/shirasu/clambda/internal/domain/function"
 )
 
 // DetachVPCUseCase handles detaching VPC from Lambda functions
