@@ -39,3 +39,6 @@ cdk/*/*.d.ts
 cdk/*/*.cdk.staging/
 # Added by goreleaser init:
 dist/
+
+# Build artifacts
+/clambda
