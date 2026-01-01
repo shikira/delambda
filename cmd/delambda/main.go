@@ -199,7 +199,7 @@ func handleDelete(region, profile *string) {
 		// Delete a single function
 		functionRepo := repository.NewFunctionRepository(awsClient.Lambda)
 		logGroupRepo := repository.NewLogGroupRepository(awsClient.Logs)
-		deleteUseCase := usecase.NewDeleteFunctionUseCase(functionRepo, logGroupRepo)
+		deleteUseCase := usecase.NewDeleteFunctionUseCase(functionRepo, logGroupRepo, os.Stdout)
 
 		input := &usecase.DeleteFunctionInput{
 			FunctionName: *lambdaFlag,
@@ -213,13 +213,13 @@ func handleDelete(region, profile *string) {
 			os.Exit(1)
 		}
 
-		fmt.Printf("Successfully deleted function %s\n", *lambdaFlag)
+		fmt.Printf("\nSuccessfully deleted function %s\n", *lambdaFlag)
 	} else {
 		// Delete all functions in a stack
 		functionRepo := repository.NewFunctionRepository(awsClient.Lambda)
 		logGroupRepo := repository.NewLogGroupRepository(awsClient.Logs)
 		stackRepo := repository.NewStackRepository(awsClient.CloudFormation)
-		deleteStackUseCase := usecase.NewDeleteStackFunctionsUseCase(functionRepo, logGroupRepo, stackRepo)
+		deleteStackUseCase := usecase.NewDeleteStackFunctionsUseCase(functionRepo, logGroupRepo, stackRepo, os.Stdout)
 
 		input := &usecase.DeleteStackFunctionsInput{
 			StackName:   *stackFlag,
@@ -233,7 +233,7 @@ func handleDelete(region, profile *string) {
 			os.Exit(1)
 		}
 
-		fmt.Printf("Successfully deleted all functions in stack %s\n", *stackFlag)
+		fmt.Printf("\nSuccessfully deleted all functions in stack %s\n", *stackFlag)
 	}
 }
 
