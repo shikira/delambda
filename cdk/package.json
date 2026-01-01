@@ -13,7 +13,7 @@
     "test": "pnpm typecheck && vitest run",
     "test:coverage": "pnpm typecheck && vitest run --coverage",
     "test:watch": "vitest",
-    "cdk": "cdk"
+    "cdk": "pnpm exec cdk"
   },
   "packageManager": "pnpm@9.15.4",
   "devDependencies": {

@@ -171,7 +171,7 @@ else
 	@echo "Deploying CDK test infrastructure (using default AWS credentials)..."
 endif
 	cd cdk && pnpm run build
-	cd cdk && npx cdk deploy $(PROFILE_FLAG) --require-approval never
+	cd cdk && pnpm run cdk deploy $(PROFILE_FLAG) --require-approval never
 	@echo "Deploy complete!"
 
 # Destroy CDK test infrastructure
@@ -181,7 +181,7 @@ ifdef PROFILE
 else
 	@echo "Destroying CDK test infrastructure (using default AWS credentials)..."
 endif
-	cd cdk && npx cdk destroy $(PROFILE_FLAG) --force
+	cd cdk && pnpm run cdk destroy $(PROFILE_FLAG) --force
 	@echo "Destroy complete!"
 
 # Generate coverage report
